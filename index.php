@@ -60,7 +60,7 @@ $user_name = 'Sergey'; // укажите здесь ваше имя
                     </li>
                 </ul>
                 <!-- здесь должен быть PHP код, который показывает следующий тег по условию -->
-                <? if ($is_auth===1): ?>
+                <?php if ($is_auth==1): ?>
                 <ul class="header__user-nav">
                     <li class="header__profile">
                         <a class="header__profile-link" href="#">
@@ -111,7 +111,7 @@ $user_name = 'Sergey'; // укажите здесь ваше имя
                         <a class="header__post-button button button--transparent" href="adding-post.html">Пост</a>
                     </li>
                 </ul>
-                <? endif; ?>
+                <?php endif; ?>
             </nav>
         </div>
     </div>
