@@ -2,6 +2,45 @@
 $is_auth = rand(0, 1);
 
 $user_name = 'Sergey'; // укажите здесь ваше имя
+
+$info_cards = [
+    'card1' => [
+        'header' => 'Цитата',
+        'type' => 'post-quote',
+        'content' => 'Мы в жизни любим только раз, а после ищем лишь похожих',
+        'user_name' => 'Лариса',
+        'avatar' => 'userpic-larisa-small.jpg'
+    ],
+    'card2' => [
+        'header' => 'Игра престолов',
+        'type' => 'post-text',
+        'content' => 'Не могу дождаться начала финального сезона своего любимого сериала!',
+        'user_name' => 'Владик',
+        'avatar' => 'userpic.jpg'
+    ],
+    'card3' => [
+        'header' => 'Наконец, обработал фотки!',
+        'type' => 'post-photo',
+        'content' => 'rock-medium.jpg',
+        'user_name' => 'Виктор',
+        'avatar' => 'userpic-mark.jpg'
+    ],
+    'card4' => [
+        'header' => 'Моя мечта',
+        'type' => 'post-photo',
+        'content' => 'coast-medium.jpg',
+        'user_name' => 'Лариса',
+        'avatar' => 'userpic-larisa-small.jpg'
+    ],
+    'card5' => [
+        'header' => 'Лучшие курсы',
+        'type' => 'post-link',
+        'content' => 'www.htmlacademy.ru',
+        'user_name' => 'Владик',
+        'avatar' => 'userpic.jpg'
+    ],
+];
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
