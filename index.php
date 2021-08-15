@@ -3,36 +3,36 @@ $is_auth = rand(0, 1);
 
 $user_name = 'Sergey'; // укажите здесь ваше имя
 
-$info_cards = [
-    'card1' => [
+$posts = [
+    [
         'header' => 'Цитата',
         'type' => 'post-quote',
         'content' => 'Мы в жизни любим только раз, а после ищем лишь похожих',
         'user_name' => 'Лариса',
         'avatar' => 'userpic-larisa-small.jpg'
     ],
-    'card2' => [
+    [
         'header' => 'Игра престолов',
         'type' => 'post-text',
         'content' => 'Не могу дождаться начала финального сезона своего любимого сериала!',
         'user_name' => 'Владик',
         'avatar' => 'userpic.jpg'
     ],
-    'card3' => [
+    [
         'header' => 'Наконец, обработал фотки!',
         'type' => 'post-photo',
         'content' => 'rock-medium.jpg',
         'user_name' => 'Виктор',
         'avatar' => 'userpic-mark.jpg'
     ],
-    'card4' => [
+    [
         'header' => 'Моя мечта',
         'type' => 'post-photo',
         'content' => 'coast-medium.jpg',
         'user_name' => 'Лариса',
         'avatar' => 'userpic-larisa-small.jpg'
     ],
-    'card5' => [
+    [
         'header' => 'Лучшие курсы',
         'type' => 'post-link',
         'content' => 'www.htmlacademy.ru',
@@ -99,7 +99,7 @@ $info_cards = [
                     </li>
                 </ul>
                 <!-- здесь должен быть PHP код, который показывает следующий тег по условию -->
-                <?php if ($is_auth==1): ?>
+                <?php if ($is_auth===1): ?>
                 <ul class="header__user-nav">
                     <li class="header__profile">
                         <a class="header__profile-link" href="#">
@@ -243,24 +243,24 @@ $info_cards = [
             </div>
         </div>
         <div class="popular__posts">
-            <?php foreach ($info_cards as $card=>$array): ?>
-            <article class="popular__post post <?=$info_cards[$card]['type']?>">
+            <?php foreach ($posts as $post): ?>
+            <article class="popular__post post <?=$post['type']?>">
                 <header class="post__header">
-                    <h2><?=$info_cards[$card]['header']?></h2>
+                    <h2><?=$post['header']?></h2>
                 </header>
                 <div class="post__main">
                     <!--содержимое для поста-цитаты-->
-                    <?php if ($info_cards[$card]['type']==='post-quote'): ?>
+                    <?php if ($post['type']==='post-quote'): ?>
                     <blockquote>
                         <p>
-                            <?=$info_cards[$card]['content']?>
+                            <?=$post['content']?>
                         </p>
                         <cite>Неизвестный Автор</cite>
                     </blockquote>
                     <?php endif; ?>
 
                     <!--содержимое для поста-ссылки-->
-                    <?php if ($info_cards[$card]['type']==='post-link'): ?>
+                    <?php if ($post['type']==='post-link'): ?>
                     <div class="post-link__wrapper">
                         <a class="post-link__external" href="http://" title="Перейти по ссылке">
                             <div class="post-link__info-wrapper">
@@ -268,23 +268,23 @@ $info_cards = [
                                     <img src="https://www.google.com/s2/favicons?domain=vitadental.ru" alt="Иконка">
                                 </div>
                                 <div class="post-link__info">
-                                    <h3><?=$info_cards[$card]['header']?></h3>
+                                    <h3><?=$post['header']?></h3>
                                 </div>
                             </div>
-                            <span><?=$info_cards[$card]['content']?></span>
+                            <span><?=$post['content']?></span>
                         </a>
                     </div>
                     <?php endif; ?>
 
                     <!--содержимое для поста-фото-->
-                    <?php if ($info_cards[$card]['type']==='post-photo'): ?>
+                    <?php if ($post['type']==='post-photo'): ?>
                     <div class="post-photo__image-wrapper">
-                        <img src="img/<?=$info_cards[$card]['content']?>" alt="Фото от пользователя" width="360" height="240">
+                        <img src="img/<?=$post['content']?>" alt="Фото от пользователя" width="360" height="240">
                     </div>
                     <?php endif; ?>
 
                     <!--содержимое для поста-видео-->
-                    <?php if ($info_cards[$card]['type']==='post-video'): ?>
+                    <?php if ($post['type']==='post-video'): ?>
                     <div class="post-video__block">
                         <div class="post-video__preview">
                             <?=embed_youtube_cover(/* вставьте ссылку на видео */); ?>
@@ -300,18 +300,18 @@ $info_cards = [
                     <?php endif; ?>
 
                     <!--содержимое для поста-текста-->
-                    <?php if ($info_cards[$card]['type']==='post-text'): ?>
-                    <p> <?=$info_cards[$card]['content']?></p>
+                    <?php if ($post['type']==='post-text'): ?>
+                    <p> <?=$post['content']?></p>
                     <?php endif; ?>
                 </div>
                 <footer class="post__footer">
                     <div class="post__author">
                         <a class="post__author-link" href="#" title="Автор">
                             <div class="post__avatar-wrapper">
-                                <img class="post__author-avatar" src="img/<?=$info_cards[$card]['avatar']?>" alt="Аватар пользователя">
+                                <img class="post__author-avatar" src="img/<?=$post['avatar']?>" alt="Аватар пользователя">
                             </div>
                             <div class="post__info">
-                                <b class="post__author-name"><?=$info_cards[$card]['user_name']?></b>
+                                <b class="post__author-name"><?=$post['user_name']?></b>
                                 <time class="post__time" datetime="">дата</time>
                             </div>
                         </a>
