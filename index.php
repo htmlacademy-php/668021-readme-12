@@ -41,6 +41,50 @@ $posts = [
     ],
 ];
 
+function cut_text($text, $count)
+{
+    // 1. Разбить текст на слова, используя разделитель пробел
+    // 2. В полученном массиве посчитать количество символов в тексте
+    // 3. Если количество символов больше, чем $count_symbols, то обрезать текст до этого количества символов
+    // 3.1 Если кол-во символов меньше, то обратно вернуть слова в текст без изменений
+    // 4. Добавить к последнему слову текста многоточие.
+    // 5. Добавить ссылку ниже "читать далее"
+    // Количество символов в тексте
+    $count_symbols = 0;
+    // Текущий текст
+    $current_text = $text;
+    // Разбиваем на слова текст
+    $words = explode(" ", $current_text);
+
+    foreach ($words as $index => $word) {
+        if (($count_symbols + strlen($word)) < $count) {
+            $count_symbols += strlen($word);
+        } else { // Если количество символов в строке превышает заданное кол-во, то обрезаем массив
+            // Не понятно, почему здесь не видно эту переменную, которая объявлена выше.
+            $current_text = implode(" ", array_slice($words, 0, $index));
+            break;
+        }
+    }
+/*
+    if ($name_task == 'Все') {
+        $current_count_project = count($list_tasks);
+    }
+    else {
+        foreach ($list_tasks as $description_task => $attributes_of_task) {
+            if ($name_task == $list_tasks[$description_task]['category']) {
+                $current_count_project++;
+            }
+        }
+    }
+    return $current_count_project;
+*/
+    return $count_symbols;
+};
+
+$text_text = "Good question!  Try to remember a recent dream.  For example, let’s say you are driving a car in Paris, which then turns into a motorcycle, and a minute later, becomes a bicycle.  But since you are trying to get to grandmother’s house, you simply accept these changes as normal and natural.  You lack critical awareness, and just follow the course of the dream. First, you have an incredible capacity to have fun! ";
+
+echo cut_text($text_text, 300);
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
