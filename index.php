@@ -14,7 +14,7 @@ $posts = [
     [
         'header' => 'Игра престолов',
         'type' => 'post-text',
-        'content' => 'Не могу дождаться начала финального сезона своего любимого сериала!',
+        'content' => 'Но элементы политического процесса неоднозначны и будут указаны как претенденты на роль ключевых факторов. С другой стороны, базовый вектор развития, а также свежий взгляд на привычные вещи - безусловно открывает новые горизонты для поставленных обществом задач. А ещё интерактивные прототипы призывают нас к новым свершениям, которые, в свою очередь, должны быть описаны максимально подробно. Приятно, граждане, наблюдать, как независимые государства, инициированные исключительно синтетически, указаны как претенденты на роль ключевых факторов.',
         'user_name' => 'Владик',
         'avatar' => 'userpic.jpg'
     ],
@@ -40,6 +40,33 @@ $posts = [
         'avatar' => 'userpic.jpg'
     ],
 ];
+
+function cut_text($text)
+{
+    // Количество по которому обрезать текст
+    $count = 300;
+    // Количество символов в тексте
+    $count_symbols = 0;
+    // Текущий текст
+    $current_text = $text;
+    // Разбиваем на слова текст
+    $words = explode(" ", $current_text);
+    $read_next = '';
+
+    if (strlen($current_text) > $count) {
+
+        foreach ($words as $index => $word) {
+            if (($count_symbols + mb_strlen($word)) <= $count) {
+                $count_symbols = $count_symbols + mb_strlen($word) + 1;
+            } else { // Если количество символов в строке превышает заданное кол-во, то обрезаем массив
+                $current_text = implode(" ", array_slice($words, 0, $index))."...";
+                $read_next = "<a class='post-text__more-link' href='#'>Читать далее</a>";
+                break;
+            }
+        }
+    }
+    return "<p>".$current_text."</p>".$read_next;
+};
 
 ?>
 <!DOCTYPE html>
@@ -301,7 +328,7 @@ $posts = [
 
                     <!--содержимое для поста-текста-->
                     <?php if ($post['type']==='post-text'): ?>
-                    <p> <?=$post['content']?></p>
+                    <p> <?=cut_text($post['content'])?></p>
                     <?php endif; ?>
                 </div>
                 <footer class="post__footer">
